@@ -1320,6 +1320,16 @@ www.google.com/search?q={{query}}</string>
          ============================================================================ -->
     <string name="browser_brave_name">Brave Browser</string>
     <string name="browser_in_app_name">Przeglądarka w aplikacji</string>
+    <string name="browser_floating_name">Pływająca przeglądarka</string>
+    <string name="browser_floating_search_hint">Szukaj lub wpisz adres</string>
+    <string name="browser_floating_move">Przenieś okno</string>
+    <string name="browser_floating_back">Wstecz</string>
+    <string name="browser_floating_forward">Dalej</string>
+    <string name="browser_floating_refresh">Odśwież stronę</string>
+    <string name="browser_floating_minimize">Minimalizuj przeglądarkę</string>
+    <string name="browser_floating_close">Zamknij przeglądarkę</string>
+    <string name="browser_floating_resize">Zmień rozmiar okna</string>
+    <string name="browser_floating_restore">Przywróć przeglądarkę</string>
     <string name="open_with_engine">Otwórz w: %1$s</string>
     <string name="search_engine_ai_mode">Tryb AI</string>
     <string name="search_engine_brave">Brave Search</string>
