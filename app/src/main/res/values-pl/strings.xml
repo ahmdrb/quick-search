@@ -826,6 +826,9 @@
     <string name="settings_edge_gesture_visibility">Widoczność</string>
     <string name="settings_floating_button_title">Pływający przycisk</string>
     <string name="settings_floating_button_desc">Dotknij pływającego przycisku wyszukiwania, aby otworzyć Quick Search z dowolnej aplikacji</string>
+    <string name="settings_floating_browser_shortcut_title">Skrót do pływającej przeglądarki</string>
+    <string name="settings_floating_browser_shortcut_desc">Pokaż przesuwany przycisk globusa nad innymi aplikacjami. Dotknij go, aby otworzyć Floating Browser. Wymagane jest zezwolenie na wyświetlanie nad innymi aplikacjami.</string>
+    <string name="browser_floating_shortcut_accessibility">Otwórz Floating Browser</string>
     <string name="settings_notch_title">Wcięcie</string>
     <string name="settings_notch_launch_desc">Dotknij wcięcia, aby otworzyć Quick Search</string>
     <string name="settings_floating_button_move_hint">Przytrzymaj przycisk i przeciągnij go, aby przenieść go w dowolne miejsce na ekranie.</string>
