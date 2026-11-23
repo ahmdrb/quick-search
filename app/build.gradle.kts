@@ -45,7 +45,7 @@ android {
             isDebuggable = true
             isJniDebuggable = true
             isMinifyEnabled = false
-            resValue("string", "app_name", "QS Debug")
+            resValue("string", "app_name", "Quick Search")
         }
         release {
             signingConfig = signingConfigs.getByName("debug")
