@@ -6,8 +6,11 @@ import com.tk.quicksearch.search.core.SearchTarget
 const val BROWSER_ID_PREFIX = "browser:"
 
 const val IN_APP_BROWSER_PACKAGE = "com.tk.quicksearch.inappbrowser"
+const val FLOATING_BROWSER_PACKAGE = "com.tk.quicksearch.floatingbrowser"
 
 fun isInAppBrowserPackage(packageName: String): Boolean = packageName == IN_APP_BROWSER_PACKAGE
+
+fun isFloatingBrowserPackage(packageName: String): Boolean = packageName == FLOATING_BROWSER_PACKAGE
 
 fun SearchTarget.getId(): String =
     when (this) {
