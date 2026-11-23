@@ -254,8 +254,8 @@ class FloatingButtonOverlay(
 
     private fun onTap(view: ButtonView) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
-        if (previewVisible) {
-            Log.d(TAG, "tap ignored: customization preview")
+        if (previewVisible && !view.isBrowserShortcut) {
+            Log.d(TAG, "tap ignored: search-button customization preview")
             return
         }
         if (view.isBrowserShortcut) {
