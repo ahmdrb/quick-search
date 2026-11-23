@@ -800,6 +800,9 @@
     <string name="settings_edge_gesture_visibility">表示の濃さ</string>
     <string name="settings_floating_button_title">フローティングボタン</string>
     <string name="settings_floating_button_desc">フローティング検索ボタンをタップして、どのアプリからでも Quick Search を開きます</string>
+    <string name="settings_floating_browser_shortcut_title">フローティングブラウザーのショートカット</string>
+    <string name="settings_floating_browser_shortcut_desc">他のアプリの上に移動できる地球儀ボタンを表示します。タップすると Floating Browser が開きます。他のアプリの上に表示する権限が必要です。</string>
+    <string name="browser_floating_shortcut_accessibility">フローティングブラウザーを開く</string>
     <string name="settings_notch_title">ノッチ</string>
     <string name="settings_notch_launch_desc">ノッチをタップして Quick Search を開く</string>
     <string name="settings_floating_button_move_hint">ボタンを長押ししてドラッグすると、画面上の好きな場所に移動できます。</string>
