@@ -261,7 +261,7 @@ class FloatingBrowserService : Service() {
             setBackgroundColor(panelColor())
         }
 
-        val moveHandle = button("⠿", getString(R.string.browser_floating_name), dp(38)) { }
+        val moveHandle = button("⠿", getString(R.string.browser_floating_move), dp(40)) { }
         moveHandle.setOnTouchListener { _, event -> dragPanel(event) }
         toolbar.addView(moveHandle)
 
@@ -270,7 +270,7 @@ class FloatingBrowserService : Service() {
             textSize = 14f
             setTextColor(primaryTextColor())
             setHintTextColor(secondaryTextColor())
-            hint = "Search or enter address"
+            hint = getString(R.string.browser_floating_search_hint)
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_URI
             imeOptions = EditorInfo.IME_ACTION_GO
             setPadding(dp(8), 0, dp(8), 0)
@@ -286,15 +286,15 @@ class FloatingBrowserService : Service() {
         address = addressField
         toolbar.addView(addressField, LinearLayout.LayoutParams(0, dp(48), 1f))
 
-        toolbar.addView(button("‹", getString(R.string.desc_navigate_back), dp(36)) {
+        toolbar.addView(button("‹", getString(R.string.browser_floating_back), dp(40)) {
             if (webView.canGoBack()) webView.goBack()
         })
-        toolbar.addView(button("›", getString(R.string.action_open), dp(36)) {
+        toolbar.addView(button("›", getString(R.string.browser_floating_forward), dp(40)) {
             if (webView.canGoForward()) webView.goForward()
         })
-        toolbar.addView(button("↻", getString(R.string.action_open), dp(36)) { webView.reload() })
-        toolbar.addView(button("−", getString(R.string.browser_floating_name), dp(36)) { minimizePanel() })
-        toolbar.addView(button("×", getString(R.string.browser_floating_name), dp(36)) { stopSelf() })
+        toolbar.addView(button("↻", getString(R.string.browser_floating_refresh), dp(40)) { webView.reload() })
+        toolbar.addView(button("−", getString(R.string.browser_floating_minimize), dp(40)) { minimizePanel() })
+        toolbar.addView(button("×", getString(R.string.browser_floating_close), dp(40)) { stopSelf() })
 
         content.addView(toolbar, LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -319,7 +319,7 @@ class FloatingBrowserService : Service() {
             textSize = 17f
             gravity = Gravity.CENTER
             setTextColor(secondaryTextColor())
-            contentDescription = getString(R.string.browser_floating_name)
+            contentDescription = getString(R.string.browser_floating_resize)
             setOnTouchListener { _, event -> resizePanel(event) }
         }
         root.addView(resizeHandle, FrameLayout.LayoutParams(dp(48), dp(48), Gravity.BOTTOM or Gravity.END))
@@ -367,7 +367,7 @@ class FloatingBrowserService : Service() {
                 setStroke(dp(1), secondaryTextColor())
             }
             elevation = dp(8).toFloat()
-            contentDescription = getString(R.string.browser_floating_name)
+            contentDescription = getString(R.string.browser_floating_restore)
             setOnTouchListener { view, event -> dragBubble(view, event) }
         }
         val bubbleParams = WindowManager.LayoutParams(
