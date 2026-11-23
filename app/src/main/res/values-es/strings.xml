@@ -794,6 +794,9 @@
     <string name="settings_edge_gesture_visibility">Visibilidad</string>
     <string name="settings_floating_button_title">Botón flotante</string>
     <string name="settings_floating_button_desc">Toca un botón de búsqueda flotante para abrir Quick Search desde cualquier app</string>
+    <string name="settings_floating_browser_shortcut_title">Acceso directo al navegador flotante</string>
+    <string name="settings_floating_browser_shortcut_desc">Muestra un botón de globo que puedes mover sobre otras aplicaciones. Tócalo para abrir el navegador flotante. Se requiere el permiso para mostrarse sobre otras aplicaciones.</string>
+    <string name="browser_floating_shortcut_accessibility">Abrir navegador flotante</string>
     <string name="settings_notch_title">Notch</string>
     <string name="settings_notch_launch_desc">Toca el notch para abrir Quick Search</string>
     <string name="settings_floating_button_move_hint">Mantén presionado el botón y arrástralo para moverlo a cualquier lugar de la pantalla.</string>
