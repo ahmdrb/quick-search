@@ -712,13 +712,15 @@ class SearchEngineManager(
                     }
                 displayLabel?.let { BrowserApp(packageName = packageName, label = it) }
             }.sortedBy { it.label.lowercase() } +
-            BrowserApp(
-                packageName = IN_APP_BROWSER_PACKAGE,
-                label = context.getString(R.string.browser_in_app_name),
-            ),
-            BrowserApp(
-                packageName = FLOATING_BROWSER_PACKAGE,
-                label = context.getString(R.string.browser_floating_name),
+            listOf(
+                BrowserApp(
+                    packageName = IN_APP_BROWSER_PACKAGE,
+                    label = context.getString(R.string.browser_in_app_name),
+                ),
+                BrowserApp(
+                    packageName = FLOATING_BROWSER_PACKAGE,
+                    label = context.getString(R.string.browser_floating_name),
+                ),
             )
     }
 
