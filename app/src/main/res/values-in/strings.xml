@@ -1282,6 +1282,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave Browser</string>
     <string name="browser_in_app_name">Browser Dalam Aplikasi</string>
+    <string name="browser_floating_name">Browser Mengambang</string>
+    <string name="browser_floating_search_hint">Cari atau masukkan alamat</string>
+    <string name="browser_floating_move">Pindahkan jendela</string>
+    <string name="browser_floating_back">Kembali</string>
+    <string name="browser_floating_forward">Maju</string>
+    <string name="browser_floating_refresh">Muat ulang halaman</string>
+    <string name="browser_floating_minimize">Minimalkan browser</string>
+    <string name="browser_floating_close">Tutup browser</string>
+    <string name="browser_floating_resize">Ubah ukuran jendela</string>
+    <string name="browser_floating_restore">Pulihkan browser</string>
     <string name="open_with_engine">Buka dengan %1$s</string>
     <string name="search_engine_ai_mode">Mode AI</string>
     <string name="search_engine_brave">Brave Search</string>
