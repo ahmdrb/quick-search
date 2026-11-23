@@ -449,6 +449,14 @@ open class UserAppPreferencesCore(protected val context: Context) {
 
     fun setFloatingButtonOpacity(opacity: Float) = floatingButtonPreferences.setOpacity(opacity)
 
+    fun setFloatingBrowserShortcutEnabled(enabled: Boolean) =
+        floatingButtonPreferences.setBrowserShortcutEnabled(enabled)
+
+    fun setFloatingBrowserShortcutPosition(
+        positionX: Float,
+        positionY: Float,
+    ) = floatingButtonPreferences.setBrowserShortcutPosition(positionX, positionY)
+
     // ============================================================================
     // Reminder Preferences
     // ============================================================================
