@@ -1323,6 +1323,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave Browser</string>
     <string name="browser_in_app_name">In-App Browser</string>
+    <string name="browser_floating_name">Floating Browser</string>
+    <string name="browser_floating_search_hint">Search or enter address</string>
+    <string name="browser_floating_move">Move window</string>
+    <string name="browser_floating_back">Go back</string>
+    <string name="browser_floating_forward">Go forward</string>
+    <string name="browser_floating_refresh">Refresh page</string>
+    <string name="browser_floating_minimize">Minimize browser</string>
+    <string name="browser_floating_close">Close browser</string>
+    <string name="browser_floating_resize">Resize window</string>
+    <string name="browser_floating_restore">Restore browser</string>
     <string name="open_with_engine">Open with %1$s</string>
     <string name="search_engine_ai_mode">AI mode</string>
     <string name="search_engine_amazon" translatable="false">Amazon</string>
