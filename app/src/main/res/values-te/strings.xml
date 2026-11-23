@@ -1279,6 +1279,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave బ్రౌజర్</string>
     <string name="browser_in_app_name">ఇన్-యాప్ బ్రౌజర్</string>
+    <string name="browser_floating_name">ఫ్లోటింగ్ బ్రౌజర్</string>
+    <string name="browser_floating_search_hint">శోధించండి లేదా చిరునామాను నమోదు చేయండి</string>
+    <string name="browser_floating_move">విండోను తరలించండి</string>
+    <string name="browser_floating_back">వెనుకకు</string>
+    <string name="browser_floating_forward">ముందుకు</string>
+    <string name="browser_floating_refresh">పేజీని రిఫ్రెష్ చేయండి</string>
+    <string name="browser_floating_minimize">బ్రౌజర్‌ను కనిష్టీకరించండి</string>
+    <string name="browser_floating_close">బ్రౌజర్‌ను మూసివేయండి</string>
+    <string name="browser_floating_resize">విండో పరిమాణాన్ని మార్చండి</string>
+    <string name="browser_floating_restore">బ్రౌజర్‌ను పునరుద్ధరించండి</string>
     <string name="open_with_engine">%1$sతో తెరువు</string>
     <string name="search_engine_ai_mode">AI మోడ్</string>
     <string name="search_engine_brave">Brave శోధన</string>
