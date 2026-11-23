@@ -273,7 +273,7 @@ class FloatingBrowserService : Service() {
         toolbar.addView(moveHandle)
 
         val addressField = EditText(this).apply {
-            singleLine = true
+            setSingleLine(true)
             textSize = 14f
             setTextColor(primaryTextColor())
             setHintTextColor(secondaryTextColor())
