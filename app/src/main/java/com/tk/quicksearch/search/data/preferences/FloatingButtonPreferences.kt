@@ -14,12 +14,20 @@ data class FloatingButtonConfig(
     val positionX: Float = DEFAULT_POSITION_X,
     /** Vertical position as a fraction of the space the button can move across. */
     val positionY: Float = DEFAULT_POSITION_Y,
+    /** Whether the independent Floating Browser shortcut bubble is shown. */
+    val browserShortcutEnabled: Boolean = false,
+    /** Horizontal position of the browser shortcut as a fraction of its movable area. */
+    val browserPositionX: Float = DEFAULT_BROWSER_POSITION_X,
+    /** Vertical position of the browser shortcut as a fraction of its movable area. */
+    val browserPositionY: Float = DEFAULT_BROWSER_POSITION_Y,
 ) {
     companion object {
         const val DEFAULT_SIZE_DP = 40
         const val DEFAULT_OPACITY = 0.3f
         const val DEFAULT_POSITION_X = 1f
         const val DEFAULT_POSITION_Y = 0.6f
+        const val DEFAULT_BROWSER_POSITION_X = 0f
+        const val DEFAULT_BROWSER_POSITION_Y = 0.6f
 
         const val MIN_SIZE_DP = 36
         const val MAX_SIZE_DP = 80
@@ -42,6 +50,9 @@ class FloatingButtonPreferences(
                     .coerceIn(FloatingButtonConfig.MIN_OPACITY, FloatingButtonConfig.MAX_OPACITY),
             positionX = prefs.getFloat(KEY_POSITION_X, FloatingButtonConfig.DEFAULT_POSITION_X).coerceIn(0f, 1f),
             positionY = prefs.getFloat(KEY_POSITION_Y, FloatingButtonConfig.DEFAULT_POSITION_Y).coerceIn(0f, 1f),
+            browserShortcutEnabled = prefs.getBoolean(KEY_BROWSER_SHORTCUT_ENABLED, false),
+            browserPositionX = prefs.getFloat(KEY_BROWSER_POSITION_X, FloatingButtonConfig.DEFAULT_BROWSER_POSITION_X).coerceIn(0f, 1f),
+            browserPositionY = prefs.getFloat(KEY_BROWSER_POSITION_Y, FloatingButtonConfig.DEFAULT_BROWSER_POSITION_Y).coerceIn(0f, 1f),
         )
 
     fun setEnabled(enabled: Boolean) = prefs.edit().putBoolean(KEY_ENABLED, enabled).apply()
@@ -55,6 +66,17 @@ class FloatingButtonPreferences(
         positionY: Float,
     ) = prefs.edit().putFloat(KEY_POSITION_X, positionX).putFloat(KEY_POSITION_Y, positionY).apply()
 
+    fun setBrowserShortcutEnabled(enabled: Boolean) =
+        prefs.edit().putBoolean(KEY_BROWSER_SHORTCUT_ENABLED, enabled).apply()
+
+    fun setBrowserShortcutPosition(
+        positionX: Float,
+        positionY: Float,
+    ) = prefs.edit()
+        .putFloat(KEY_BROWSER_POSITION_X, positionX)
+        .putFloat(KEY_BROWSER_POSITION_Y, positionY)
+        .apply()
+
     fun registerListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) =
         prefs.registerOnSharedPreferenceChangeListener(listener)
 
@@ -67,6 +89,11 @@ class FloatingButtonPreferences(
         private const val KEY_OPACITY = "floating_button_opacity"
         private const val KEY_POSITION_X = "floating_button_position_x"
         private const val KEY_POSITION_Y = "floating_button_position_y"
-        fun isFloatingButtonKey(key: String?): Boolean = key?.startsWith("floating_button_") == true
+        private const val KEY_BROWSER_SHORTCUT_ENABLED = "floating_browser_shortcut_enabled"
+        private const val KEY_BROWSER_POSITION_X = "floating_browser_shortcut_position_x"
+        private const val KEY_BROWSER_POSITION_Y = "floating_browser_shortcut_position_y"
+        fun isFloatingButtonKey(key: String?): Boolean =
+            key?.startsWith("floating_button_") == true ||
+                key?.startsWith("floating_browser_shortcut_") == true
     }
 }
