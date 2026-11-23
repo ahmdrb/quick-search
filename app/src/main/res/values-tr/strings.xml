@@ -1278,6 +1278,16 @@
      ============================================================================ -->
 <string name="browser_brave_name">Brave Browser</string>
 <string name="browser_in_app_name">Uygulama içi tarayıcı</string>
+    <string name="browser_floating_name">Yüzen Tarayıcı</string>
+    <string name="browser_floating_search_hint">Ara veya adres gir</string>
+    <string name="browser_floating_move">Pencereyi taşı</string>
+    <string name="browser_floating_back">Geri</string>
+    <string name="browser_floating_forward">İleri</string>
+    <string name="browser_floating_refresh">Sayfayı yenile</string>
+    <string name="browser_floating_minimize">Tarayıcıyı küçült</string>
+    <string name="browser_floating_close">Tarayıcıyı kapat</string>
+    <string name="browser_floating_resize">Pencereyi yeniden boyutlandır</string>
+    <string name="browser_floating_restore">Tarayıcıyı geri yükle</string>
 <string name="open_with_engine">%1$s ile aç</string>
 <string name="search_engine_ai_mode">AI modu</string>
 <string name="search_engine_brave">Brave Search</string>
