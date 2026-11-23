@@ -1307,6 +1307,16 @@
      ============================================================================ -->
 <string name="browser_brave_name">Браузер Brave</string>
 <string name="browser_in_app_name">Встроенный браузер</string>
+    <string name="browser_floating_name">Плавающий браузер</string>
+    <string name="browser_floating_search_hint">Поиск или ввод адреса</string>
+    <string name="browser_floating_move">Переместить окно</string>
+    <string name="browser_floating_back">Назад</string>
+    <string name="browser_floating_forward">Вперёд</string>
+    <string name="browser_floating_refresh">Обновить страницу</string>
+    <string name="browser_floating_minimize">Свернуть браузер</string>
+    <string name="browser_floating_close">Закрыть браузер</string>
+    <string name="browser_floating_resize">Изменить размер окна</string>
+    <string name="browser_floating_restore">Восстановить браузер</string>
 <string name="open_with_engine">Открыть с помощью %1$s</string>
 <string name="search_engine_ai_mode">Режим ИИ</string>
 <string name="search_engine_brave">Brave Search</string>
