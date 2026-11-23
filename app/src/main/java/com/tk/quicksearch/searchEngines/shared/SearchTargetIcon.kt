@@ -29,6 +29,7 @@ import com.tk.quicksearch.search.core.SearchTarget
 import com.tk.quicksearch.searchEngines.getAppPackageCandidates
 import com.tk.quicksearch.searchEngines.getContentDescription
 import com.tk.quicksearch.searchEngines.isInAppBrowserPackage
+import com.tk.quicksearch.searchEngines.isFloatingBrowserPackage
 import com.tk.quicksearch.searchEngines.getDrawableResId
 import com.tk.quicksearch.searchEngines.getIconColorPolicy
 import com.tk.quicksearch.searchEngines.isInstallOnlyEngine
@@ -197,7 +198,7 @@ fun SearchTargetIcon(
         }
 
         is SearchTarget.Browser -> {
-            if (isInAppBrowserPackage(target.app.packageName)) {
+            if (isInAppBrowserPackage(target.app.packageName) || isFloatingBrowserPackage(target.app.packageName)) {
                 Icon(
                     imageVector = MaterialSymbols.Public,
                     contentDescription = target.app.label,
