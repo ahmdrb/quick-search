@@ -9,6 +9,8 @@ import androidx.browser.customtabs.CustomTabsIntent
 import com.tk.quicksearch.R
 import com.tk.quicksearch.searchEngines.SearchEngine
 import com.tk.quicksearch.searchEngines.IN_APP_BROWSER_PACKAGE
+import com.tk.quicksearch.searchEngines.FLOATING_BROWSER_PACKAGE
+import com.tk.quicksearch.floatingBrowser.FloatingBrowserLauncher
 import com.tk.quicksearch.searchEngines.buildCustomSearchUrl
 import com.tk.quicksearch.searchEngines.buildSearchUrl
 import com.tk.quicksearch.searchEngines.getDisplayNameResId
@@ -65,6 +67,17 @@ internal object SearchIntents {
         browserPackageName: String,
         onShowToast: ((Int, String?) -> Unit)? = null,
     ) {
+        if (browserPackageName == FLOATING_BROWSER_PACKAGE) {
+            val trimmedQuery = query.trim()
+            val searchUrl = if (trimmedQuery.isBlank()) {
+                "https://www.google.com"
+            } else {
+                buildSearchUrl(trimmedQuery, SearchEngine.GOOGLE)
+            }
+            FloatingBrowserLauncher.open(context, searchUrl)
+            return
+        }
+
         if (browserPackageName == IN_APP_BROWSER_PACKAGE) {
             val trimmedQuery = query.trim()
             if (trimmedQuery.isBlank()) {
@@ -122,6 +135,19 @@ internal object SearchIntents {
         browserPackageName: String,
         onShowToast: ((Int, String?) -> Unit)? = null,
     ) {
+        if (browserPackageName == FLOATING_BROWSER_PACKAGE) {
+            val normalizedUrl = normalizeToBrowsableUrl(url)
+            if (normalizedUrl == null) {
+                onShowToast?.invoke(
+                    R.string.common_error_unable_to_open,
+                    context.getString(R.string.browser_floating_name),
+                )
+                return
+            }
+            FloatingBrowserLauncher.open(context, normalizedUrl)
+            return
+        }
+
         if (browserPackageName == IN_APP_BROWSER_PACKAGE) {
             val normalizedUrl = normalizeToBrowsableUrl(url)
             if (normalizedUrl == null) {
