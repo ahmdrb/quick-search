@@ -91,7 +91,7 @@ fun FloatingButtonSettingsSection(modifier: Modifier = Modifier) {
         )
     }
 
-    val showAccessibilityRow = config.enabled && !isAccessibilityEnabled
+    val showAccessibilityRow = (config.enabled || config.browserShortcutEnabled) && !isAccessibilityEnabled
     Column(modifier = modifier) {
         SegmentedGroup {
             AnimatedSegmentedTiles {
@@ -109,6 +109,23 @@ fun FloatingButtonSettingsSection(modifier: Modifier = Modifier) {
                         },
                         leadingIcon = MaterialSymbols.Search,
                         isFirstItem = true,
+                        isLastItem = false,
+                    )
+                }
+                tile {
+                    SettingsToggleRow(
+                        title = stringResource(R.string.settings_floating_browser_shortcut_title),
+                        subtitle = stringResource(R.string.settings_floating_browser_shortcut_desc),
+                        checked = config.browserShortcutEnabled,
+                        onCheckedChange = { enabled ->
+                            preferences.setFloatingBrowserShortcutEnabled(enabled)
+                            config = config.copy(browserShortcutEnabled = enabled)
+                            if (enabled && !LockScreenAccessibilityService.isEnabled(context)) {
+                                requestAccessibility()
+                            }
+                        },
+                        leadingIcon = MaterialSymbols.Public,
+                        isFirstItem = false,
                         isLastItem = true,
                     )
                 }
@@ -129,7 +146,7 @@ fun FloatingButtonSettingsSection(modifier: Modifier = Modifier) {
             }
         }
 
-        SettingsRevealVisibility(visible = config.enabled && isAccessibilityEnabled) {
+        SettingsRevealVisibility(visible = (config.enabled || config.browserShortcutEnabled) && isAccessibilityEnabled) {
             Column(
                 modifier = Modifier.padding(top = DesignTokens.SpacingLarge),
                 verticalArrangement = Arrangement.spacedBy(DesignTokens.SpacingMedium),
