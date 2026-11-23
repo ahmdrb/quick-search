@@ -41,8 +41,8 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 /**
- * Round search button drawn as an accessibility overlay. Tapping it opens Quick Search from any
- * app; long pressing it lets the user drag it anywhere on screen. It never reads screen content.
+ * Draggable Quick Search and Floating Browser shortcuts drawn as accessibility overlays. The
+ * browser shortcut launches the floating WebView; neither button reads screen content.
  */
 class FloatingButtonOverlay(
     private val service: AccessibilityService,
