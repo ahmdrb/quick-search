@@ -1279,6 +1279,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Navegador Brave</string>
     <string name="browser_in_app_name">Navegador integrado (In-App)</string>
+    <string name="browser_floating_name">Navegador flutuante</string>
+    <string name="browser_floating_search_hint">Pesquisar ou inserir endereço</string>
+    <string name="browser_floating_move">Mover janela</string>
+    <string name="browser_floating_back">Voltar</string>
+    <string name="browser_floating_forward">Avançar</string>
+    <string name="browser_floating_refresh">Atualizar página</string>
+    <string name="browser_floating_minimize">Minimizar navegador</string>
+    <string name="browser_floating_close">Fechar navegador</string>
+    <string name="browser_floating_resize">Redimensionar janela</string>
+    <string name="browser_floating_restore">Restaurar navegador</string>
     <string name="open_with_engine">Abrir com %1$s</string>
     <string name="search_engine_ai_mode">Modo IA</string>
     <string name="search_engine_brave">Brave Search</string>
