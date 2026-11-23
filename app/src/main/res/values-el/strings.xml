@@ -1279,6 +1279,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave Browser</string>
     <string name="browser_in_app_name">In-App Browser</string>
+    <string name="browser_floating_name">Πλωτό πρόγραμμα περιήγησης</string>
+    <string name="browser_floating_search_hint">Αναζήτηση ή εισαγωγή διεύθυνσης</string>
+    <string name="browser_floating_move">Μετακίνηση παραθύρου</string>
+    <string name="browser_floating_back">Πίσω</string>
+    <string name="browser_floating_forward">Εμπρός</string>
+    <string name="browser_floating_refresh">Ανανέωση σελίδας</string>
+    <string name="browser_floating_minimize">Ελαχιστοποίηση προγράμματος περιήγησης</string>
+    <string name="browser_floating_close">Κλείσιμο προγράμματος περιήγησης</string>
+    <string name="browser_floating_resize">Αλλαγή μεγέθους παραθύρου</string>
+    <string name="browser_floating_restore">Επαναφορά προγράμματος περιήγησης</string>
     <string name="open_with_engine">Άνοιγμα με %1$s</string>
     <string name="search_engine_ai_mode">AI mode</string>
     <string name="search_engine_brave">Brave Search</string>
