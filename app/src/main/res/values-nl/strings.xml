@@ -1329,6 +1329,16 @@ www.google.com/search?q={{query}}</string>
 
     <string name="browser_brave_name">Brave Browser</string>
     <string name="browser_in_app_name">In-app browser</string>
+    <string name="browser_floating_name">Zwevende browser</string>
+    <string name="browser_floating_search_hint">Zoeken of adres invoeren</string>
+    <string name="browser_floating_move">Venster verplaatsen</string>
+    <string name="browser_floating_back">Terug</string>
+    <string name="browser_floating_forward">Vooruit</string>
+    <string name="browser_floating_refresh">Pagina vernieuwen</string>
+    <string name="browser_floating_minimize">Browser minimaliseren</string>
+    <string name="browser_floating_close">Browser sluiten</string>
+    <string name="browser_floating_resize">Vensterformaat wijzigen</string>
+    <string name="browser_floating_restore">Browser herstellen</string>
     <string name="open_with_engine">Openen met %1$s</string>
     <string name="search_engine_ai_mode">AI-modus</string>
     <string name="search_engine_brave">Brave</string>
