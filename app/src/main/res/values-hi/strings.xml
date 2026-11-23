@@ -1279,6 +1279,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave ब्राउज़र</string>
     <string name="browser_in_app_name">इन-ऐप ब्राउज़र</string>
+    <string name="browser_floating_name">फ़्लोटिंग ब्राउज़र</string>
+    <string name="browser_floating_search_hint">खोजें या पता दर्ज करें</string>
+    <string name="browser_floating_move">विंडो खिसकाएँ</string>
+    <string name="browser_floating_back">पीछे जाएँ</string>
+    <string name="browser_floating_forward">आगे जाएँ</string>
+    <string name="browser_floating_refresh">पेज रीफ़्रेश करें</string>
+    <string name="browser_floating_minimize">ब्राउज़र छोटा करें</string>
+    <string name="browser_floating_close">ब्राउज़र बंद करें</string>
+    <string name="browser_floating_resize">विंडो का आकार बदलें</string>
+    <string name="browser_floating_restore">ब्राउज़र पुनर्स्थापित करें</string>
     <string name="open_with_engine">%1$s के साथ खोलें</string>
     <string name="search_engine_ai_mode">AI मोड</string>
     <string name="search_engine_brave">Brave Search</string>
