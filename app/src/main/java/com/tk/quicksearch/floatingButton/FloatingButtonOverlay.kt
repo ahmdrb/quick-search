@@ -30,6 +30,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import com.tk.quicksearch.R
+import com.tk.quicksearch.floatingBrowser.FloatingBrowserLauncher
 import com.tk.quicksearch.edgeGesture.EdgeGestureOverlay
 import com.tk.quicksearch.search.data.preferences.FloatingButtonConfig
 import com.tk.quicksearch.search.data.preferences.FloatingButtonPreferences
@@ -49,6 +50,7 @@ class FloatingButtonOverlay(
     private val windowManager = service.getSystemService(WindowManager::class.java)
     private val preferences = FloatingButtonPreferences(service)
     private var buttonView: ButtonView? = null
+    private var browserShortcutView: ButtonView? = null
     private var previewVisible = false
     private var appVisible = false
     private var screenReceiverRegistered = false
@@ -95,27 +97,47 @@ class FloatingButtonOverlay(
 
     fun refresh() {
         val config = preferences.getConfig()
-        setScreenReceiverRegistered(config.enabled)
-        if (!config.enabled || (appVisible && !previewVisible) || isScreenLockedOrOff()) {
-            removeButton()
+        setScreenReceiverRegistered(config.enabled || config.browserShortcutEnabled)
+        val screenUnavailable = isScreenLockedOrOff()
+        updateButton(
+            config = config,
+            isBrowserShortcut = false,
+            shouldShow = config.enabled && !(appVisible && !previewVisible) && !screenUnavailable,
+        )
+        updateButton(
+            config = config,
+            isBrowserShortcut = true,
+            shouldShow = config.browserShortcutEnabled && !screenUnavailable,
+        )
+    }
+
+    private fun updateButton(
+        config: FloatingButtonConfig,
+        isBrowserShortcut: Boolean,
+        shouldShow: Boolean,
+    ) {
+        val view = if (isBrowserShortcut) browserShortcutView else buttonView
+        if (!shouldShow) {
+            removeButton(isBrowserShortcut)
             return
         }
-        val view = buttonView
         if (view == null) {
-            val newView = ButtonView(service)
+            val newView = ButtonView(service, isBrowserShortcut)
             newView.applyAppearance(config)
-            runCatching { windowManager.addView(newView, layoutParams(config)) }
-                .onSuccess { buttonView = newView }
-                .onFailure { error -> Log.w(TAG, "button not added", error) }
+            runCatching { windowManager.addView(newView, layoutParams(config, isBrowserShortcut)) }
+                .onSuccess {
+                    if (isBrowserShortcut) browserShortcutView = newView else buttonView = newView
+                }
+                .onFailure { error -> Log.w(TAG, "floating button not added", error) }
         } else if (!view.isDragging) {
             view.applyAppearance(config)
-            runCatching { windowManager.updateViewLayout(view, layoutParams(config)) }
+            runCatching { windowManager.updateViewLayout(view, layoutParams(config, isBrowserShortcut)) }
         }
     }
 
-    private fun removeButton() {
-        val view = buttonView ?: return
-        buttonView = null
+    private fun removeButton(isBrowserShortcut: Boolean) {
+        val view = if (isBrowserShortcut) browserShortcutView else buttonView ?: return
+        if (isBrowserShortcut) browserShortcutView = null else buttonView = null
         view.cancelPendingLongPress()
         runCatching { windowManager.removeView(view) }
     }
@@ -150,9 +172,14 @@ class FloatingButtonOverlay(
     private fun touchSizePx(config: FloatingButtonConfig): Int =
         maxOf(dpToPx(config.sizeDp), dpToPx(DesignTokens.MinTouchTarget.value.toInt()))
 
-    private fun layoutParams(config: FloatingButtonConfig): WindowManager.LayoutParams {
+    private fun layoutParams(
+        config: FloatingButtonConfig,
+        isBrowserShortcut: Boolean,
+    ): WindowManager.LayoutParams {
         val size = touchSizePx(config)
         val area = movableArea(size)
+        val positionX = if (isBrowserShortcut) config.browserPositionX else config.positionX
+        val positionY = if (isBrowserShortcut) config.browserPositionY else config.positionY
         return WindowManager.LayoutParams(
             size,
             size,
@@ -163,8 +190,8 @@ class FloatingButtonOverlay(
             PixelFormat.TRANSLUCENT,
         ).apply {
             gravity = Gravity.TOP or Gravity.LEFT
-            x = area.left + (area.width() * config.positionX).roundToInt()
-            y = area.top + (area.height() * config.positionY).roundToInt()
+            x = area.left + (area.width() * positionX).roundToInt()
+            y = area.top + (area.height() * positionY).roundToInt()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 // Positions are computed against the full screen, with system bars excluded
                 // explicitly by movableArea().
@@ -230,6 +257,10 @@ class FloatingButtonOverlay(
             Log.d(TAG, "tap ignored: customization preview")
             return
         }
+        if (view.isBrowserShortcut) {
+            FloatingBrowserLauncher.open(service, "https://www.google.com")
+            return
+        }
         runCatching { service.startActivity(EdgeGestureOverlay.launchIntent(service)) }
             .onSuccess { Log.d(TAG, "launch requested") }
             .onFailure { error -> Log.w(TAG, "launch failed", error) }
@@ -242,12 +273,19 @@ class FloatingButtonOverlay(
         val area = movableArea(view.width)
         val positionX = if (area.width() > 0) (params.x - area.left).toFloat() / area.width() else 0f
         val positionY = if (area.height() > 0) (params.y - area.top).toFloat() / area.height() else 0f
-        preferences.setPosition(positionX.coerceIn(0f, 1f), positionY.coerceIn(0f, 1f))
+        val normalizedX = positionX.coerceIn(0f, 1f)
+        val normalizedY = positionY.coerceIn(0f, 1f)
+        if (view.isBrowserShortcut) {
+            preferences.setBrowserShortcutPosition(normalizedX, normalizedY)
+        } else {
+            preferences.setPosition(normalizedX, normalizedY)
+        }
     }
 
     @SuppressLint("ViewConstructor")
     private inner class ButtonView(
         context: Context,
+        val isBrowserShortcut: Boolean,
     ) : ImageView(context) {
         private val touchSlopPx = ViewConfiguration.get(context).scaledTouchSlop.toFloat()
         private var downRawX = 0f
@@ -267,9 +305,18 @@ class FloatingButtonOverlay(
             }
 
         init {
-            setImageResource(R.drawable.ic_widget_search)
+            setImageResource(
+                if (isBrowserShortcut) R.drawable.ic_floating_browser else R.drawable.ic_widget_search,
+            )
             scaleType = ScaleType.FIT_CENTER
-            contentDescription = context.getString(R.string.settings_gesture_open_quick_search)
+            contentDescription =
+                context.getString(
+                    if (isBrowserShortcut) {
+                        R.string.browser_floating_shortcut_accessibility
+                    } else {
+                        R.string.settings_gesture_open_quick_search
+                    },
+                )
             isClickable = true
         }
 
