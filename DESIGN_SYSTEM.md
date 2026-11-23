@@ -176,6 +176,8 @@ Appearance (`LocalSearchChromeBlurEnabled`) restores frosted chrome. Result card
 
 ### Other deliberate deviations
 
+- **Floating browser window.** `floatingBrowser/FloatingBrowser.kt` owns a native Android `TYPE_APPLICATION_OVERLAY` window containing a WebView. Its native View toolbar is intentional: the browser must retain focus for address entry and keyboard input, preserve the WebView while the host Activity is not visible, and handle system-window drag/resize gestures. It uses the app theme's background and text attributes, localized accessibility labels, and Android's explicit Draw over other apps permission. A user-started foreground service keeps the overlay alive and exposes its active state in the notification shade.
+
 - **App suggestion tabs.** These scrollable Material tabs are transparent over the Home
   background. The selected label uses heavier type in place of a bottom indicator. Labels use
   the Home foreground color, dimmed to `ContentHighAlpha` when unselected. The tabs are 36dp tall, below the 48dp touch target,
