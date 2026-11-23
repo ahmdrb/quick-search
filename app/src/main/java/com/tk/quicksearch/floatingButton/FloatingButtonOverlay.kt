@@ -78,7 +78,8 @@ class FloatingButtonOverlay(
     fun detach() {
         preferences.unregisterListener(preferenceListener)
         setScreenReceiverRegistered(false)
-        removeButton()
+        removeButton(isBrowserShortcut = false)
+        removeButton(isBrowserShortcut = true)
     }
 
     /** Keeps the button visible over Quick Search and prevents it from relaunching the app. */
@@ -136,7 +137,7 @@ class FloatingButtonOverlay(
     }
 
     private fun removeButton(isBrowserShortcut: Boolean) {
-        val view = if (isBrowserShortcut) browserShortcutView else buttonView ?: return
+        val view = (if (isBrowserShortcut) browserShortcutView else buttonView) ?: return
         if (isBrowserShortcut) browserShortcutView = null else buttonView = null
         view.cancelPendingLongPress()
         runCatching { windowManager.removeView(view) }
