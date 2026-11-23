@@ -1336,6 +1336,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave Browser</string>
     <string name="browser_in_app_name">In-App Browser</string>
+    <string name="browser_floating_name">متصفح عائم</string>
+    <string name="browser_floating_search_hint">ابحث أو أدخل عنوانًا</string>
+    <string name="browser_floating_move">تحريك النافذة</string>
+    <string name="browser_floating_back">رجوع</string>
+    <string name="browser_floating_forward">تقدم</string>
+    <string name="browser_floating_refresh">تحديث الصفحة</string>
+    <string name="browser_floating_minimize">تصغير المتصفح</string>
+    <string name="browser_floating_close">إغلاق المتصفح</string>
+    <string name="browser_floating_resize">تغيير حجم النافذة</string>
+    <string name="browser_floating_restore">استعادة المتصفح</string>
     <string name="open_with_engine">فتح باستخدام %1$s</string>
     <string name="search_engine_ai_mode">AI mode</string>
     <string name="search_engine_brave">Brave Search</string>
