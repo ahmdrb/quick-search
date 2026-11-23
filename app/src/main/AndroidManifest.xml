@@ -11,6 +11,9 @@
 
     <!-- Network Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <!-- At a Glance hotspot row: the hotspot state broadcast and getter require it -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- At a Glance Wi-Fi sign-in row: reads the default network's captive portal capability -->
@@ -608,6 +611,20 @@
         <!-- The overlay gets its own task so launching it from another app
              (notch tap, edge gesture) doesn't bring the main app task forward
              behind the transparent popup. -->
+        <activity
+            android:name=".floatingBrowser.FloatingBrowserPermissionActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service
+            android:name=".floatingBrowser.FloatingBrowserService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User-requested floating browser window that stays visible above other apps." />
+        </service>
+
         <activity
             android:name=".overlay.OverlayActivity"
             android:exported="${profileCaptureExported}"
