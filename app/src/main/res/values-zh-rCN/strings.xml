@@ -1265,6 +1265,16 @@
          ============================================================================ -->
     <string name="browser_brave_name">Brave 浏览器</string>
     <string name="browser_in_app_name">内置浏览器</string>
+    <string name="browser_floating_name">悬浮浏览器</string>
+    <string name="browser_floating_search_hint">搜索或输入网址</string>
+    <string name="browser_floating_move">移动窗口</string>
+    <string name="browser_floating_back">后退</string>
+    <string name="browser_floating_forward">前进</string>
+    <string name="browser_floating_refresh">刷新页面</string>
+    <string name="browser_floating_minimize">最小化浏览器</string>
+    <string name="browser_floating_close">关闭浏览器</string>
+    <string name="browser_floating_resize">调整窗口大小</string>
+    <string name="browser_floating_restore">恢复浏览器</string>
     <string name="open_with_engine">使用 %1$s 打开</string>
     <string name="search_engine_ai_mode">AI 模式</string>
     <string name="search_engine_brave">Brave 搜索</string>
