@@ -1288,6 +1288,16 @@ www.google.com/search?q={{query}}</string>
          ============================================================================ -->
     <string name="browser_brave_name">Braveブラウザ</string>
     <string name="browser_in_app_name">アプリ内ブラウザ</string>
+    <string name="browser_floating_name">フローティングブラウザー</string>
+    <string name="browser_floating_search_hint">検索またはアドレスを入力</string>
+    <string name="browser_floating_move">ウィンドウを移動</string>
+    <string name="browser_floating_back">戻る</string>
+    <string name="browser_floating_forward">進む</string>
+    <string name="browser_floating_refresh">ページを更新</string>
+    <string name="browser_floating_minimize">ブラウザーを最小化</string>
+    <string name="browser_floating_close">ブラウザーを閉じる</string>
+    <string name="browser_floating_resize">ウィンドウサイズを変更</string>
+    <string name="browser_floating_restore">ブラウザーを復元</string>
     <string name="open_with_engine">%1$sで開く</string>
     <string name="search_engine_ai_mode">AIモード</string>
     <string name="search_engine_brave">Brave Search</string>
